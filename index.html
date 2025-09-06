@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StableMotion: Training Motion Cleanup Models with Unpaired Corrupted Data</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">StableMotion: Training Motion Cleanup Models with Unpaired Corrupted Data</h1>
+          <div class="is-size-4 publication-authors">
+            SIGGRAPH Asia 2025
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yxmu.foo/">Yuxuan Mu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://hungyuling.com">Hung Yu Ling</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://yi-shi94.github.io">Yi Shi</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.dk/citations?user=C-7QfjgAAAAJ&hl=da">Ismael Baira Ojeda</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://sites.google.com/view/perryxi/home">Pengcheng Xi</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="https://nrc.canada.ca/en/corporate/contact-us/nrc-directory-science-professionals/chang-shu">Chang Shu</a><sup>3</sup>,</span>
+              <span class="author-block">
+              <a href="https://dl.acm.org/profile/99659572328">Fabio Zinno</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://xbpeng.github.io/">Xue Bin Peng</a><sup>1,4</sup></span>
+            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Simon Fraser University</span>&nbsp
+            <span class="author-block"><sup>2</sup>Electronic Arts</span>&nbsp
+            <span class="author-block"><sup>3</sup>National Research Council Canada</span>&nbsp
+            <span class="author-block"><sup>4</sup>NVIDIA</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2505.03154" target="_blank"
+                   class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Murrol/StableMotion" target="_blank"
+                   class="external-link button is-normal is-rounded">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://youtu.be/3Y7MMAH02B4" target="_blank"
+                class="external-link button is-normal is-rounded">
+                <span class="icon">
+                  <i class="fab fa-youtube"></i>
+                </span>
+                <span>Video</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    
+        <!-- <center><h2 class="title is-3">Abstract</h2></center> -->
+    <div class="hero-body has-text-centered">
+        <img src = "./static/images/teaser.png" height="100%"></img><br>
+
+    </div>
+
+    <p style="text-align: justify; margin-inline: 5% 5%;"> 
+      Motion capture (mocap) data often exhibits visually jarring artifacts due to inaccurate sensors and post-processing. Cleaning this corrupted data can require substantial manual effort from human experts, which can be a costly and time-consuming process. Previous data-driven motion cleanup methods offer the promise of automating this cleanup process, but often require in-domain paired corrupted-to-clean training data. Constructing such paired datasets requires access to high-quality, relatively artifact-free motion clips, which often necessitates laborious manual cleanup. 
+      <span style="font-weight: bold;
+        background: linear-gradient(90deg, #2e7d32, #66bb6a, #2e7d32);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% auto;
+        animation: shine 3s linear infinite;">
+        In this work, we present StableMotion, a simple yet effective method for training motion cleanup models directly from unpaired corrupted datasets that need cleanup.
+      </span>
+      <style>
+      @keyframes shine {
+        to { background-position: 200% center; }
+      }
+      </style>
+      The core component of our method is the introduction of motion quality indicators, which can be easily annotated— through manual labeling or heuristic algorithms—and enable training of quality-aware motion generation models on raw motion data with <i>mixed</i> quality. At test time, the model can be prompted to generate high-quality motions using the quality indicators. Our method can be implemented through a simple diffusion-based framework, leading to a unified motion generate-discriminate model, which can be used to both identify and fix corrupted frames. We demonstrate that our proposed method is effective for training motion cleanup models on raw mocap data in production scenarios by applying StableMotion to SoccerMocap, a 245-hour soccer mocap dataset containing real-world motion artifacts. The trained model effectively corrects a wide range of motion artifacts, reducing motion pops and frozen frames by 68% and 81%, respectively. On our benchmark dataset, we further show that cleanup models trained with our method on unpaired corrupted data outperform state-of-the-art methods trained on clean or paired data, while also achieving comparable performance in preserving the content of the original motion clips.
+    </p>
+    <br>
+    <!-- <div class="content has-text-centered">
+      <video id="replay-video"
+            autoplay 
+             controls
+             playsinline
+             width="100%">
+        <source src="./static/video/StableMotion_Promo.mp4"
+                type="video/mp4">
+      </video>
+    </div> -->
+    <div class="hero-body has-text-centered">
+      <video id="video" controls playsinline width="100%">
+        <source src="./static/video/StableMotion_Promo.mp4" type="video/mp4">
+      </video>
+      <br>
+      <span style="font-size:12px">* This video contains audio.</span>
+    </div>
+    
+  </div>
+</section>
+
+
+
+
+
+<section class="section is-light is-small">
+  <div class="container is-max-desktop">
+    <center><h2 class="title is-3">Method Overview</h2></center>
+    <div class="hero-body has-text-centered">
+      <img src = "./static/images/pipeline.png" height="100%"></img><br>
+    </div>
+  </div>
+    <!--/ Abstract. -->
+
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{mu2025stablemotion,
+  title={StableMotion: Training Motion Cleanup Models with Unpaired Corrupted Data},
+  author={Mu, Yuxuan and Ling, Hung Yu and Shi, Yi and Ojeda, Ismael Baira and Xi, Pengcheng and Shu, Chang and Zinno, Fabio and Peng, Xue Bin},
+  journal={arXiv preprint arXiv:2505.03154},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <div class="content">
+        <p>
+          This website is licensed under a <a rel="license"
+          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+        Commons Attribution-ShareAlike 4.0 International License</a>.
+      </p>
+      <p>
+        Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page. If you want to reuse their <a
+        href="https://github.com/nerfies/nerfies.github.io">source code</a>, please credit them appropriately.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+</footer>
+
+<script>
+      var videoContainer = document.getElementById('video-container');
+      var video = document.getElementById('video');
+
+      var videoOffset = videoContainer.offsetTop;
+
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY || window.pageYOffset;
+
+        if (scrollPosition >= videoOffset) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    </script>
+
+</body>
+</html>
