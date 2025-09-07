@@ -127,32 +127,25 @@
       </style>
       The core component of our method is the introduction of motion quality indicators, which can be easily annotated— through manual labeling or heuristic algorithms—and enable training of quality-aware motion generation models on raw motion data with <i>mixed</i> quality. At test time, the model can be prompted to generate high-quality motions using the quality indicators. Our method can be implemented through a simple diffusion-based framework, leading to a unified motion generate-discriminate model, which can be used to both identify and fix corrupted frames. We demonstrate that our proposed method is effective for training motion cleanup models on raw mocap data in production scenarios by applying StableMotion to SoccerMocap, a 245-hour soccer mocap dataset containing real-world motion artifacts. The trained model effectively corrects a wide range of motion artifacts, reducing motion pops and frozen frames by 68% and 81%, respectively. On our benchmark dataset, we further show that cleanup models trained with our method on unpaired corrupted data outperform state-of-the-art methods trained on clean or paired data, while also achieving comparable performance in preserving the content of the original motion clips.
     </p>
-    <br>
-    <!-- <div class="content has-text-centered">
-      <video id="replay-video"
-            autoplay 
-             controls
-             playsinline
-             width="100%">
-        <source src="./static/video/StableMotion_Promo.mp4"
-                type="video/mp4">
-      </video>
-    </div> -->
-    <div class="hero-body has-text-centered">
+    <br>    
+  </div>
+</section>
+
+<section class="section is-light is-small hero">
+  <div class="container is-max-desktop">
+  <div class="hero-body has-text-centered">
       <video id="video" controls playsinline width="100%">
         <source src="./static/video/StableMotion_Promo.mp4" type="video/mp4">
       </video>
       <br>
-      <span style="font-size:12px">* This video contains audio.</span>
+      <span style="font-size:16px">* This video contains audio.</span>
     </div>
-    
   </div>
 </section>
 
-
-<section class="section is-light is-small hero">
+<section class="section is-light is-small">
   <div class="container is-max-desktop">
-    <center><h2 class="title is-3">The Method</h2></center>
+    <h2 class="title is-3 has-text-centered is-centered">The Method</h2>
     <div class="hero-body has-text-centered is-centered">
       <img src = "./static/images/training_anime_crop.gif" height="100%"></img><br>
     </div>
@@ -171,14 +164,88 @@
     Similar to the practice of prompting text-to-image model with “photo-realistic quality”, QualVar offers a knob to specify the generation quality. This allows the model to cleanup raw mocap data by first identifying corrupted segments and then inpainting them with high-quality motions.
           </p>
     </div>
-    <!-- <div class="hero-body has-text-centered is-centered">
-      <img src = "./static/images/testtime_scaling.png" height="80%"></img><br>
+</section>
+
+<section class="section is-light is-small">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 is-centered has-text-centered">StableMotion-SoccerMocap</h2>
+    <div class="hero-body has-text-centered is-centered">      
+      <video id="video" autoplay muted loop playsinline width="100%">
+        <source src="static/video/soccer_demo.mp4" type="video/mp4">
+      </video>
+    </div>
+</section>
+
+<section class="section is-light is-small">
+  <div class="hero-body">
+    <div class="container is-centered has-text-centered  is-max-desktop">
+      <h2 class="title is-3 is-centered has-text-centered">StableMotion-BrokenAMASS</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+
+      <div class="column is-centered has-text-centered">
+                <video poster="" id="tree" autoplay  muted loop playsinline height="100%">
+          <source src="static/video/gallery/brokenamass1.mp4"
+          type="video/mp4">
+        </video>
+      </div>
+      <div class="column is-centered has-text-centered">
+                <video poster="" id="tree" autoplay  muted loop playsinline height="100%">
+          <source src="static/video/gallery/brokenamass2.mp4"
+          type="video/mp4">
+      </div>
+      <div class="column is-centered has-text-centered">
+                <video poster="" id="tree" autoplay  muted loop playsinline height="100%">
+          <source src="static/video/gallery/brokenamass3.mp4"
+          type="video/mp4">
+      </div>
+      <div class="column is-centered has-text-centered">
+                <video poster="" id="tree" autoplay  muted loop playsinline height="100%">
+          <source src="static/video/gallery/brokenamass4.mp4"
+          type="video/mp4">
+      </div>
+      <div class="column is-centered has-text-centered">
+                <video poster="" id="tree" autoplay  muted loop playsinline height="100%">
+          <source src="static/video/gallery/brokenamass5.mp4"
+          type="video/mp4">
+      </div>
+      <div class="column is-centered has-text-centered">
+                <video poster="" id="tree" autoplay  muted loop playsinline height="100%">
+          <source src="static/video/gallery/brokenamass6.mp4"
+          type="video/mp4">
+      </div>
+      <div class="column is-centered has-text-centered">
+                <video poster="" id="tree" autoplay  muted loop playsinline height="100%">
+          <source src="static/video/gallery/brokenamass7.mp4"
+          type="video/mp4">
+      </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="section is-light is-small">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered is-centered">Test-Time Techniques</h2>
+    <div class="hero-body has-text-centered is-centered">      
+      <video id="video" autoplay muted loop playsinline width="100%">
+        <source src="./static/video/adaptivecleanup_mini.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="content has-text-justified">
           <p>
-    Inspired by state-return trajectory modeling in offine RL, we incorporate a frame-level quality indicator variable (QualVar) similar to state-level reward in RL. Our StableMotion framework utilizes a generate-discriminate approach, where a model is jointly trained to evaluate motion quality and generate motion of varying quality, according to QualVar. 
+    <b>Adaptive cleanup</b> uses soft motion quality evaluation and soft motion inpainting. It allows the model to adaptively adjust the modification to each frame based on the severity of the artifacts, enabling it to better preserve the content of the original frames.
           </p>
-  </div> -->
+    </div>
+    <div class="hero-body has-text-centered is-centered">      
+      <video id="video" autoplay muted loop playsinline width="100%">
+        <source src="./static/video/ensemble_mini.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="content has-text-justified">
+          <p>
+    <b>Quality-aware ensemble</b> leverages the diversity of diffusion models and the dual functionality of generate-discriminate models. It ensembles diverse candidate motions by selecting the highest-quality motion based on predicted motion quality scores, leading to more consistent and higher-quality results than performing a single pass of the cleanup model.
+          </p>
+    </div>
 </section>
 
 <section class="section" id="BibTeX">

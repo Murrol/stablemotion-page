@@ -155,3 +155,34 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.results-carousel {
+  overflow: hidden;
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
+
+.results-carousel .item {
+  width: 50px;
+  height: 50px;/*
+  margin: 50px;
+  overflow: hidden;
+  padding: 50px*/;
+  font-size: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /*margin: -25px 0 0 -25px;*/
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+.slider-pagination .slider-page {
+  background: #000000;
+}
+
+.eql-cntrb { 
+  font-size: smaller;
+}
