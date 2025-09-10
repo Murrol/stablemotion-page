@@ -104,7 +104,6 @@
                 </a>
               </span>
             </div>
-
           </div>
         </div>
       </div>
@@ -158,24 +157,16 @@
 </section>
 
 <section class="section is-light is-small hero">
-  <div class="container is-max-desktop">
-  <div class="hero-body has-text-centered">
-      <!-- <video id="video" controls playsinline width="100%">
-        <source src="./static/video/StableMotion_Promo.mp4" type="video/mp4">
-      </video>
-      <br>
-      <span style="font-size:16px">* This video contains audio.</span> -->
-      <iframe width="720" height="405"
-        src="https://youtu.be/XuxjManLPoo" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
+  <div style="text-align: center; margin: 20px 0;">
+      <iframe width="1280" height="720"
+        src="https://www.youtube-nocookie.com/embed/XuxjManLPoo" 
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          refererpolicy=“cross-origin-with-strict-origin
+          allowfullscreen>
       </iframe>
-
-      <!-- <iframe width="720" height="405" src="https://www.youtube.com/embed/O1tzbiDMW8U?si=g4vNcTHftz7fO-xG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
-    </div>
-  </div>
+      </div>
 </section>
 
 <section class="section is-light is-small">
@@ -204,10 +195,14 @@
 <section class="section is-light is-small">
   <div class="container is-max-desktop">
     <h2 class="title is-3 is-centered has-text-centered">StableMotion-SoccerMocap</h2>
-    <div class="hero-body has-text-centered is-centered">      
-      <video id="video" autoplay muted loop playsinline width="100%">
+
+    <video id="video" autoplay muted loop playsinline width="100%">
         <source src="static/video/soccer_demo.mp4" type="video/mp4">
       </video>
+    <div class="content has-text-justified">
+    <p>
+      We apply StableMotion to train a motion cleanup model on SoccerMocap, a 245-hour raw motion capture dataset captured by a prominent game studio. The resulting model, StableMotion-SoccerMocap, effectively fix motion artifacts in newly captured motions from the same mocap system.
+    </p>
     </div>
 </section>
 
@@ -254,33 +249,50 @@
           type="video/mp4">
       </div>
   </div>
+  <div class="content has-text-justified">
+          <p>
+      We benchmark the performance of StableMotion on a publicly available dataset, AMASS, by introducing synthetic corruption to construct a benchmark dataset, BrokenAMASS. This demonstrates that, with StableMotion, motion cleanup models can be effectively trained even on datasets exhibiting severe motion corruptions.
+    </p>
+    </div>
 </div>
 </div>
 </section>
 
 <section class="section is-light is-small">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered is-centered">Test-Time Techniques</h2>
+<div style="border-left: 4px solid #eee; padding: 10px 16px; margin: 20px 0; background-color: #fafafa; font-size: 0.9em; color: #555;">
+  <h2 class="title is-3 has-text-centered is-centered">Test-Time Techniques</h2>
+</div>
+    <details>
+  <summary>We also propose a number
+of test-time techniques that harness the sample diversity and the
+dual functionality of the generate-discriminate model to improve
+consistency and preservation of the content in the original motion
+clips.</summary>
+
     <div class="hero-body has-text-centered is-centered">      
       <video id="video" autoplay muted loop playsinline width="100%">
         <source src="./static/video/adaptivecleanup_mini.mp4" type="video/mp4">
       </video>
-    </div>
-    <div class="content has-text-justified">
+      <div class="content has-text-justified">
           <p>
     <b>Adaptive cleanup</b> uses soft motion quality evaluation and soft motion inpainting. It allows the model to adaptively adjust the modification to each frame based on the severity of the artifacts, enabling it to better preserve the content of the original frames.
           </p>
     </div>
+    </div>
+    
     <div class="hero-body has-text-centered is-centered">      
       <video id="video" autoplay muted loop playsinline width="100%">
         <source src="./static/video/ensemble_mini.mp4" type="video/mp4">
       </video>
-    </div>
-    <div class="content has-text-justified">
+      <div class="content has-text-justified">
           <p>
     <b>Quality-aware ensemble</b> leverages the diversity of diffusion models and the dual functionality of generate-discriminate models. It ensembles diverse candidate motions by selecting the highest-quality motion based on predicted motion quality scores, leading to more consistent and higher-quality results than performing a single pass of the cleanup model.
           </p>
     </div>
+    </div>
+    
+    </details>
 </section>
 
 <section class="section" id="BibTeX">
